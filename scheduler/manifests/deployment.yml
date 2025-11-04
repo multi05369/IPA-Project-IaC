@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: ipa2025-project-scheduler
-        version: "v1.1"
+        version: "v1.2"
     spec:
       containers:
         - name: ipa2025-project-scheduler
