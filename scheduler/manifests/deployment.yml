@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipa2025-project-scheduler
+  namespace: ipa2025
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ipa2025-project-scheduler
+  template:
+    metadata:
+      labels:
+        app: ipa2025-project-scheduler
+    spec:
+      containers:
+        - name: ipa2025-project-scheduler
+          image: taikie/scheduler:latest
+          envFrom:
+            - secretRef:
+                name: "ipa2025-secret"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+      restartPolicy: Always
